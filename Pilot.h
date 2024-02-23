@@ -10,10 +10,12 @@ public:
 	Pilot(std::string);
 	~Pilot();
 	std::string getName();
+	Plane* myPlane;
+
+
 
 private:
 	std::string name;
-	Plane* myPlane;
 
 };
 

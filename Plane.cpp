@@ -15,7 +15,7 @@ Plane::Plane(std::string from, std::string to) {
 	distance = flights[destination];
 	pos = 0;
 	vel = 0;
-	at_SCE = false;
+	at_SCE = 0;
 	std::cout << "Plane created at " << this << std::endl;
 }
 Plane::~Plane()
@@ -28,12 +28,16 @@ void Plane::operate(double dt)
 	if (pos < distance)
 	{
 		pos += vel/3600 * dt;
-		at_SCE = false;
+		at_SCE = 0;
 	}
 	else
 	{
-		//std::cout << "Here" << std::endl; for testing
-		at_SCE = 1;
+		if (destination == "SCE")
+		{
+			at_SCE = 1;
+		}
+		//std::cout << "Arrived at " << destination << "!" << std::endl; //for testing
+
 		std::string temp = origin;
 		origin = destination;
 		destination = temp; 
