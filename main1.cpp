@@ -6,8 +6,14 @@ const int max_weight = 2950; //lb
 const double forward_limit = 82.1; //lb
 const double aft_limit = 84.7; //lb
 
-double calibrateFuel(double& total_weight, double& total_moment, double& fuel_weight, double moment_arm, double target);
-
+double calibrateFuel(double& total_weight, double& total_moment, double& fuel_weight, double moment_arm, double target)
+{
+	double delta = (target * total_weight - total_moment) / (moment_arm - target);
+	fuel_weight += delta;
+	total_weight += delta;
+	total_moment += delta * moment_arm;
+	return delta;
+}
 int main()
 {
 	//These variables will be populated by user
@@ -150,11 +156,3 @@ target c_g * total_weight - total moment = fuel change * moment arm - target c_g
 (target c_g * total weight - total moment) / (moment arm - target c_g) = fuel change
 */
 
-double calibrateFuel(double& total_weight, double& total_moment, double& fuel_weight, double moment_arm, double target)
-{
-	double delta = (target * total_weight - total_moment) / (moment_arm - target);
-	fuel_weight += delta;
-	total_weight += delta;
-	total_moment += delta * moment_arm;
-	return delta;
-}
