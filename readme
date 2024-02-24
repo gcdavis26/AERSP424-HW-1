@@ -2,4 +2,4 @@ Problem 1 is found in the Problem1 executable (File main1.cpp)
 Problem 2 through 5 are found in the Problem2_5 executable. Main file is main2_5.cpp, but also uses Plane.cpp and Plane.h.
 The class in Problem 6 is found in the Pilot.h and Pilot.cpp files. They are used in the executables for question 7 and 8.
 Problem 7 is found in the Problem7 executable. Main file is main7.cpp, but also uses Pilot.h, Pilot.cpp, Plane.h, and Plane.cpp. 
-Problem 8 is found in the Problem8 executable. Main file is main8.cpp, butalso uses Pilot.h, Pilot.cpp, Plane.h, and Plane.cpp. 
+Problem 8 is found in the Problem8 executable. Main file is main8.cpp, but also uses Pilot.h, Pilot.cpp, Plane.h, and Plane.cpp. 
