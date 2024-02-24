@@ -4,7 +4,7 @@
 
 void swap(Pilot &pilot, Pilot &copilot) //Pilot is pilot before swap, copilot becomes pilot in the code
 {
-	Plane *temp = copilot.myPlane;
+	Plane *temp = copilot.myPlane; 
 	copilot.myPlane = pilot.myPlane;
 	pilot.myPlane = temp;
 	std::cout << "Pilot " << copilot.getName() << " with certification number " << &copilot << " is in control of plane " << copilot.myPlane << std::endl;
@@ -26,12 +26,13 @@ int main()
 	int iter = 1500;
 	int time = 0;
 
-	std::cout << "Pilot " << pilot1.getName() << " with certification " << &pilot1 << " is in control of plane " << &blackbird << std::endl;
+	std::cout << "Pilot " << pilot1.getName() << " with certification " << &pilot1 << " is in control of plane " << pilot1.myPlane << std::endl;
+	std::cout << "Pilot " << pilot2.getName() << " with certification " << &pilot2 << " is in control of plane " << pilot2.myPlane << std::endl;
 
 	for (int x = 0; x < iter; x++)
 	{
 		time = x * timestep;
-		std::cout << "Time: " << time << " seconds, Position:" << blackbird.get_pos() << " miles." << std::endl;
+		//std::cout << "Time: " << time << " seconds, Position:" << blackbird.get_pos() << " miles." << std::endl;
 
 		blackbird.operate(timestep);
 
@@ -41,11 +42,16 @@ int main()
 			if (pilot1.myPlane == &blackbird)
 			{
 				swap(pilot1, pilot2);
+				std::cout << "Pilot " << pilot2.getName() << " with certification " << &pilot2 << " is in control of plane " << pilot2.myPlane << std::endl;
+				std::cout << "Pilot " << pilot1.getName() << " with certification " << &pilot1 << " is in control of plane " << pilot1.myPlane << std::endl;
 			}
 			else
 			{
 				swap(pilot2, pilot1);
+				std::cout << "Pilot " << pilot1.getName() << " with certification " << &pilot1 << " is in control of plane " << pilot1.myPlane << std::endl;
+				std::cout << "Pilot " << pilot2.getName() << " with certification " << &pilot2 << " is in control of plane " << pilot2.myPlane << std::endl;
 			}
+
 			
 		}
 	}

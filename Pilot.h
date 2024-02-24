@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Plane.h"
+#include <memory>
 
 #ifndef PILOT_H
 #define PILOT_H
