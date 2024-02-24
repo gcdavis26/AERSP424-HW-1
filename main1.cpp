@@ -6,6 +6,22 @@ const int max_weight = 2950; //lb
 const double forward_limit = 82.1; //lb
 const double aft_limit = 84.7; //lb
 
+//Purpose: Find the amount of fuel required for the center of gravity fo the plane to be good
+//Inputs: Total weight of system before calibration, total moment of system, current weight (passed by reference), and target weight
+//Outputs: Return the change in amount of fuel required, change all other variables accordingly
+//Other info: Target variable will either be the aft or forward limit, depending on scenario
+
+//Math:
+/*
+target c_g = (total moment + fuel change * moment arm) / (Total weight + fuel change)
+
+target c_g * total_weight + target c_g * fuel change = total moment + fuel change * moment arm
+
+target c_g * total_weight - total moment = fuel change * moment arm - target c_g * fuel change
+
+(target c_g * total weight - total moment) / (moment arm - target c_g) = fuel change
+*/
+
 double calibrateFuel(double& total_weight, double& total_moment, double& fuel_weight, double moment_arm, double target)
 {
 	double delta = (target * total_weight - total_moment) / (moment_arm - target);
@@ -139,20 +155,4 @@ int main()
 
 	return 0;
 }
-
-//Purpose: Find the amount of fuel required for the center of gravity fo the plane to be good
-//Inputs: Total weight of system before calibration, total moment of system, current weight (passed by reference), and target weight
-//Outputs: Return the change in amount of fuel required, change all other variables accordingly
-//Other info: Target variable will either be the aft or forward limit, depending on scenario
-
-//Math:
-/*
-target c_g = (total moment + fuel change * moment arm) / (Total weight + fuel change)  
-
-target c_g * total_weight + target c_g * fuel change = total moment + fuel change * moment arm
-
-target c_g * total_weight - total moment = fuel change * moment arm - target c_g * fuel change
-
-(target c_g * total weight - total moment) / (moment arm - target c_g) = fuel change
-*/
 

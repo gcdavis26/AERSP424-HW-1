@@ -8,11 +8,12 @@
 Plane::Plane(std::string from, std::string to) {
 	origin = from;
 	destination = to;
-	flights;
+	flights; //since all origins are state college, only need unique destination for the map key
+	//maps destination to distance
 	flights.insert({ "PHL", 160 });
 	flights.insert({ "ORD", 640 });
 	flights.insert({ "EWR", 220 });
-	distance = flights[destination];
+	distance = flights[destination]; 
 	pos = 0;
 	vel = 0;
 	at_SCE = 0;
@@ -27,7 +28,7 @@ void Plane::operate(double dt)
 {
 	if (pos < distance)
 	{
-		pos += vel/3600 * dt;
+		pos += vel/3600 * dt; //making sure to convert mph to miles per second
 		at_SCE = 0;
 	}
 	else
@@ -38,7 +39,7 @@ void Plane::operate(double dt)
 		}
 		//std::cout << "Arrived at " << destination << "!" << std::endl; //for testing
 
-		std::string temp = origin;
+		std::string temp = origin; //allowing for swap of origin and destination
 		origin = destination;
 		destination = temp; 
 		pos = 0.0;

@@ -11,8 +11,8 @@ public:
 	Pilot(std::string);
 	~Pilot();
 	std::string getName();
-	Plane* myPlane;
-
+	Plane* myPlane; //question 7
+	std::shared_ptr<Plane> myPlaneSmart; //question 8
 
 
 private:
